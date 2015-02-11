@@ -2,14 +2,19 @@
 
 import eyeD3
 import os
-Mfiles = []
-for (dirname, dirs, files) in os.walk('/home/stryker'):
-   for filename in files:
-       if filename.endswith('.mp3') :
-           Mfiles += [filename]
+#for (dirname, dirs, files) in os.walk('/home/stryker'):
+#   for filename in files:
+#       if filename.endswith('.mp3') :
+#           Mfiles += [filename]
 #print Mfiles
-tag = eyeD3.Tag()
+Mfiles=[]
+os.system("find /home/stryker -iname \"*.mp3\" -type f -print0 | xargs -0 -I '{}' /bin/mv \"{}\" /home/stryker/Music")
 p="/home/stryker/Music/"
+
+#List Music dir
+
+Mfiles=os.listdir(p)
+tag = eyeD3.Tag()
 for nam in Mfiles:
 	tag.link(p+nam)
 	print tag.getArtist()
@@ -17,3 +22,4 @@ for nam in Mfiles:
 	print tag.getTitle()
 	print tag.getYear()
 #print tag.getDuration()
+
