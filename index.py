@@ -2,6 +2,11 @@
 
 import eyeD3
 import os
+import datetime
+def modification_date(filename):
+    t = os.path.getmtime(filename)
+    return datetime.datetime.fromtimestamp(t)
+   
 #for (dirname, dirs, files) in os.walk('/home/stryker'):
 #   for filename in files:
 #       if filename.endswith('.mp3') :
@@ -21,5 +26,6 @@ for nam in Mfiles:
 	print tag.getAlbum()
 	print tag.getTitle()
 	print tag.getYear()
+	print modification_date(p+nam)
 #print tag.getDuration()
 
